@@ -1,0 +1,46 @@
+<mat-card>
+    <mat-card-title>Sceni Calculator</mat-card-title>
+
+    <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+            <input matInput placeholder="0" [value]="display" readonly class="display">
+        </mat-form-field>
+        <div class="memory-actions" color>
+            <button mat-stroked-button color="primary" (click)="memoryAdd()">M+</button>
+            <button mat-stroked-button color="accent" (click)="memorySubtract()">M-</button>
+            <button mat-stroked-button (click)="memoryRecall()">MR</button>
+            <button mat-stroked-button color="primary" (click)="showHistory()">History</button>
+        </div>
+        <div class="button-grid">
+            <button mat-raised-button color="warn" (click)="clear()">CA</button>
+            <button mat-raised-button (click)="append('/')">/</button>
+            <button mat-raised-button (click)="append('*')">x</button>
+            <button mat-raised-button (click)="append('')">CE</button>
+
+            <button mat-raised-button (click)="append('7')">7</button>
+            <button mat-raised-button (click)="append('8')">8</button>
+            <button mat-raised-button (click)="append('9')">9</button>
+            <button mat-raised-button color="primary" (click)="append('-')">-</button>
+
+            <button mat-raised-button (click)="append('4')">4</button>
+            <button mat-raised-button (click)="append('5')">5</button>
+            <button mat-raised-button (click)="append('6')">6</button>
+            <button mat-raised-button color="primary" (click)="append('+')">+</button>
+
+            <button mat-raised-button (click)="append('1')">1</button>
+            <button mat-raised-button (click)="append('2')">2</button>
+            <button mat-raised-button (click)="append('3')">3</button>
+            <button mat-raised-button color="accent" type="submit" class="equals" (click)="calculate()">=</button>
+
+            <button mat-raised-button class="zero" (click)="append('0')">0</button>
+            <button mat-raised-button (click)="append('.')">.</button>
+        </div>
+    </mat-card-content>
+
+</mat-card>
+<h3>Calculation History</h3>
+@for (item of history; track $index) {
+<p>
+    {{item.expression}}
+</p>
+}
